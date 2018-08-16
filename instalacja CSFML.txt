@@ -1,0 +1,24 @@
+sudo apt-get install build-essential cmake git
+sudo apt-get install libx11-dev freeglut3-dev libxcb-image0-dev libudev-dev libjpeg8-dev libopenal-dev libsndfile1-dev libfreetype6-dev 
+sudo apt-get install libcsfml-dev libcsfml-doc
+sudo apt-get install xorg-dev libglu1-mesa-dev
+
+git clone https://github.com/SFML/SFML
+cd SFML
+cd ..
+
+git clone https://github.com/SFML/CSFML
+cd CSFML
+cd ..
+
+cd SFML
+cmake .
+make
+sudo make install
+cd ..
+
+cd SFML
+SFML="$(realpath ../SFML)"
+
+cmake -DCMAKE_MODULE_PATH="$SFML/cmake/Modules" .
+make
